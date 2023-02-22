@@ -1,0 +1,67 @@
+
+---------------------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_employee_by_id`(idP  bigint)
+BEGIN
+select * from employee where id = idP ;
+END
+----------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `employee_list`()
+BEGIN
+select * from employee;
+END
+---------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `save_employee`(
+ nameP  varchar(80),
+father_nameP  varchar(80),
+mother_nameP  varchar(80),
+genderP  varchar(80),
+ageP  varchar(80),
+designationP  varchar(80),
+nid_numberP  varchar(80),
+date_of_birthP  datetime,
+contact_numberP  varchar(80),
+hobbyP varchar(100),
+addressP  varchar(80))
+BEGIN
+
+insert into employee(name,father_name,mother_name,gender,age,designation,nid_number,date_of_birth,contact_number,hobby,address) 
+values(
+nameP ,father_nameP ,mother_nameP ,genderP ,ageP ,designationP ,nid_numberP ,date_of_birthP ,contact_numberP, hobbyP, addressP 
+);
+
+
+END
+--------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_employee`(
+nameP varchar(255),
+father_nameP varchar(80),
+mother_nameP  varchar(80),
+genderP  varchar(80),
+ageP  varchar(80),
+designationP  varchar(80),
+nid_numberP  varchar(80),
+date_of_birthP  datetime,
+contact_numberP  varchar(80),
+hobbyP  varchar(80),
+addressP  varchar(80),
+idP  bigint)
+BEGIN
+update employee set 
+name=nameP,
+father_name = father_nameP  ,
+mother_name =mother_nameP ,
+gender =genderP ,
+age =ageP ,
+designation =designationP ,
+nid_number =nid_numberP ,
+date_of_birth =date_of_birthP ,
+contact_number =contact_numberP ,
+hobby=hobbyP,
+address =addressP 
+where id = idP ;
+END
+-------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_student`(idP  bigint)
+BEGIN
+delete from employee where id = idP ;
+END
